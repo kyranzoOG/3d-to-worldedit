@@ -138,7 +138,7 @@ def load_litematic(file_path):
 
 # Minecraft to Multicraft Block Mapping
 BLOCK_MAPPING = {
-    # === 基本ブロック ===
+    # === Basic Blocks ===
     "minecraft:air": None,
     "minecraft:stone": "default:stone",
     "minecraft:granite": "default:stone",
@@ -154,7 +154,7 @@ BLOCK_MAPPING = {
     "minecraft:podzol": "default:dirt",
     "minecraft:cobblestone": "default:cobble",
     
-    # === 木材 ===
+    # === Wood Planks ===
     "minecraft:planks": "default:wood",
     "minecraft:oak_planks": "default:wood",
     "minecraft:spruce_planks": "default:pine_wood",
@@ -163,7 +163,7 @@ BLOCK_MAPPING = {
     "minecraft:acacia_planks": "default:acacia_wood",
     "minecraft:dark_oak_planks": "default:wood",
     
-    # === 原木 ===
+    # === Logs ===
     "minecraft:log": "default:tree",
     "minecraft:oak_log": "default:tree",
     "minecraft:spruce_log": "default:pine_tree",
@@ -172,7 +172,7 @@ BLOCK_MAPPING = {
     "minecraft:acacia_log": "default:acacia_tree",
     "minecraft:dark_oak_log": "default:tree",
     
-    # === 葉 ===
+    # === Leaves ===
     "minecraft:leaves": "default:leaves",
     "minecraft:oak_leaves": "default:leaves",
     "minecraft:spruce_leaves": "default:pine_needles",
@@ -182,7 +182,7 @@ BLOCK_MAPPING = {
     "minecraft:dark_oak_leaves": "default:leaves",
     "minecraft:leaves2": "default:acacia_leaves",
     
-    # === 砂・砂利 ===
+    # === Sand & Gravel ===
     "minecraft:sand": "default:sand",
     "minecraft:red_sand": "default:redsand",
     "minecraft:gravel": "default:gravel",
@@ -191,7 +191,7 @@ BLOCK_MAPPING = {
     "minecraft:smooth_sandstone": "default:sandstonesmooth",
     "minecraft:red_sandstone": "default:redsandstone",
     
-    # === 鉱石 ===
+    # === Ores ===
     "minecraft:gold_ore": "default:stone_with_gold",
     "minecraft:iron_ore": "default:stone_with_iron",
     "minecraft:coal_ore": "default:stone_with_coal",
@@ -202,7 +202,7 @@ BLOCK_MAPPING = {
     "minecraft:copper_ore": "default:stone_with_copper",
     "minecraft:quartz_ore": "default:quartz_ore",
     
-    # === 鉱石ブロック ===
+    # === Mineral Blocks ===
     "minecraft:gold_block": "default:goldblock",
     "minecraft:iron_block": "default:steelblock",
     "minecraft:diamond_block": "default:diamondblock",
@@ -214,7 +214,7 @@ BLOCK_MAPPING = {
     "minecraft:chiseled_quartz_block": "default:quartz_chiseled",
     "minecraft:quartz_pillar": "default:quartz_pillar",
     
-    # === レンガ・石材 ===
+    # === Bricks & Stonework ===
     "minecraft:brick_block": "default:brick",
     "minecraft:bricks": "default:brick",
     "minecraft:stonebrick": "default:stonebrick",
@@ -225,7 +225,7 @@ BLOCK_MAPPING = {
     "minecraft:mossy_cobblestone": "default:mossycobble",
     "minecraft:nether_brick": "default:brick",
     
-    # === ガラス ===
+    # === Glass ===
     "minecraft:glass": "default:glass",
     "minecraft:glass_pane": "default:glass",
     "minecraft:stained_glass": "default:glass",
@@ -246,7 +246,7 @@ BLOCK_MAPPING = {
     "minecraft:red_stained_glass": "default:glass_red",
     "minecraft:black_stained_glass": "default:glass_black",
     
-    # === 羊毛 ===
+    # === Wool ===
     "minecraft:wool": "wool:white",
     "minecraft:white_wool": "wool:white",
     "minecraft:orange_wool": "wool:orange",
@@ -265,7 +265,7 @@ BLOCK_MAPPING = {
     "minecraft:red_wool": "wool:red",
     "minecraft:black_wool": "wool:black",
     
-    # === テラコッタ ===
+    # === Terracotta ===
     "minecraft:hardened_clay": "default:hardened_clay",
     "minecraft:terracotta": "default:hardened_clay",
     "minecraft:white_terracotta": "hardened_clay:white",
@@ -286,7 +286,7 @@ BLOCK_MAPPING = {
     "minecraft:black_terracotta": "hardened_clay:black",
     "minecraft:stained_hardened_clay": "default:hardened_clay",
     
-    # === コンクリート ===
+    # === Concrete ===
     "minecraft:concrete": "concrete:concrete",
     "minecraft:white_concrete": "concrete:concrete_white",
     "minecraft:orange_concrete": "concrete:concrete_orange",
@@ -305,7 +305,7 @@ BLOCK_MAPPING = {
     "minecraft:red_concrete": "concrete:concrete_red",
     "minecraft:black_concrete": "concrete:concrete_black",
     
-    # === その他ブロック ===
+    # === Misc Blocks ===
     "minecraft:bedrock": "default:stone",
     "minecraft:water": "default:water_source",
     "minecraft:flowing_water": "default:water_flowing",
@@ -329,7 +329,7 @@ BLOCK_MAPPING = {
     "minecraft:pumpkin": "farming_plants:pumpkin_fruit",
     "minecraft:hay_block": "farming:straw",
     
-    # === 機能ブロック ===
+    # === Functional Blocks ===
     "minecraft:chest": "default:chest",
     "minecraft:crafting_table": "workbench:workbench",
     "minecraft:furnace": "default:furnace",
@@ -362,10 +362,10 @@ def get_param2_for_stairs(states):
     # Minecraft facing to Minetest param2 mapping
     # Minecraft "facing" = direction the stairs ascend toward
     facing_map = {
-        "north": 2,  # 北向き (back to south)
-        "south": 0,  # 南向き (back to north)
-        "east": 1,   # 東向き (back to west)
-        "west": 3,   # 西向き (back to east)
+        "north": 2,  # North (back to south)
+        "south": 0,  # South (back to north)
+        "east": 1,   # East (back to west)
+        "west": 3,   # West (back to east)
     }
     
     facing = states.get("facing", "north")
@@ -475,7 +475,7 @@ def generate_commands(blocks, scale=1):
             commands.append(f"/param2 {param2}")
     
     if skipped > 0:
-        print(f"スキップしたブロック (air): {skipped}")
+        print(f"Skipped blocks (air): {skipped}")
         
     return commands
 
@@ -495,19 +495,19 @@ def save_commands(commands, output_file):
             with open(current_file, 'w') as f:
                 for cmd in commands[start_idx:end_idx]:
                     f.write(cmd + '\n')
-            print(f"パート {i+1} を保存しました: {current_file}")
+            print(f"Saved part {i+1}: {current_file}")
     else:
         with open(output_file, 'w') as f:
             for cmd in commands:
                 f.write(cmd + '\n')
-        print(f"コマンドを保存しました: {output_file}")
+        print(f"Saved commands: {output_file}")
 
 def main():
     print("--- Minecraft Schematic to Command Converter ---")
-    file_path = input("ファイルパスを入力してください (.schem, .nbt, .litematic): ").strip('"')
+    file_path = input("Enter file path (.schem, .nbt, .litematic): ").strip('"')
     
     if not os.path.exists(file_path):
-        print("ファイルが見つかりません。")
+        print("File not found.")
         return
 
     ext = os.path.splitext(file_path)[1].lower()
@@ -520,14 +520,14 @@ def main():
     elif ext == '.litematic':
         blocks = load_litematic(file_path)
     else:
-        print(f"未対応の拡張子です: {ext}")
+        print(f"Unsupported extension: {ext}")
         return
         
     if not blocks:
-        print("ブロックが見つかりませんでした。")
+        print("No blocks found.")
         return
         
-    print(f"読み込み完了: {len(blocks)} 個のブロック")
+    print(f"Loaded: {len(blocks)} blocks")
     
     # Find unknown blocks (not in mapping)
     unknown_blocks = {}
@@ -546,17 +546,17 @@ def main():
     # Ask user for replacements
     user_mappings = {}
     if unknown_blocks:
-        print(f"\n未対応のブロックが {len(unknown_blocks)} 種類見つかりました:")
+        print(f"\nFound {len(unknown_blocks)} unmapped block types:")
         for block_name, count in sorted(unknown_blocks.items(), key=lambda x: -x[1]):
-            print(f"  - {block_name} ({count} 個)")
+            print(f"  - {block_name} ({count} blocks)")
         
-        print("\n各ブロックの置換先を入力してください。")
-        print("(空欄でスキップ、'air'で削除、'default:stone'のような形式で入力)")
+        print("\nEnter replacement block IDs for each unmapped block.")
+        print("(Leave blank for default, 'air' to skip, or e.g. 'default:stone')")
         print()
         
         for block_name in sorted(unknown_blocks.keys()):
             default_fallback = block_name.replace("minecraft:", "default:")
-            replacement = input(f"{block_name} → (デフォルト: {default_fallback}): ").strip()
+            replacement = input(f"{block_name} → (default: {default_fallback}): ").strip()
             
             if replacement == "":
                 user_mappings[block_name] = default_fallback
@@ -569,20 +569,20 @@ def main():
         BLOCK_MAPPING.update(user_mappings)
         print()
     
-    filename = input("出力ファイル名を入力してください（未入力で自動生成）: ")
+    filename = input("Enter output filename (leave blank for auto): ")
     if not filename:
         base_name = os.path.splitext(os.path.basename(file_path))[0]
         filename = f"{base_name}.txt"
         
     script_dir = os.path.dirname(os.path.abspath(__file__))
     output_file = os.path.join(script_dir, filename)
-    print(f"ファイルは以下に保存されます: {output_file}")
+    print(f"Output path: {output_file}")
     
-    print("コマンド生成中...")
+    print("Generating commands...")
     commands = generate_commands(blocks)
     
     save_commands(commands, output_file)
-    print(f"完了! 総コマンド数: {len(commands)}")
+    print(f"Done! Total commands: {len(commands)}")
 
 if __name__ == "__main__":
     main()

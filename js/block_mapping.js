@@ -2,7 +2,7 @@
 // Usage: BLOCK_MAPPING["minecraft:stone"] returns "default:stone"
 
 const BLOCK_MAPPING = {
-    // === 基本ブロック ===
+    // === Basic Blocks ===
     "minecraft:air": null, // Skip air blocks
     "minecraft:stone": "default:stone",
     "minecraft:granite": "default:stone",
@@ -18,7 +18,7 @@ const BLOCK_MAPPING = {
     "minecraft:podzol": "default:dirt",
     "minecraft:cobblestone": "default:cobble",
 
-    // === 木材 ===
+    // === Wood Planks ===
     "minecraft:planks": "default:wood",
     "minecraft:oak_planks": "default:wood",
     "minecraft:spruce_planks": "default:pine_wood",
@@ -27,7 +27,7 @@ const BLOCK_MAPPING = {
     "minecraft:acacia_planks": "default:acacia_wood",
     "minecraft:dark_oak_planks": "default:wood",
 
-    // === 原木 ===
+    // === Logs ===
     "minecraft:log": "default:tree",
     "minecraft:oak_log": "default:tree",
     "minecraft:spruce_log": "default:pine_tree",
@@ -36,7 +36,7 @@ const BLOCK_MAPPING = {
     "minecraft:acacia_log": "default:acacia_tree",
     "minecraft:dark_oak_log": "default:tree",
 
-    // === 葉 ===
+    // === Leaves ===
     "minecraft:leaves": "default:leaves",
     "minecraft:oak_leaves": "default:leaves",
     "minecraft:spruce_leaves": "default:pine_needles",
@@ -46,7 +46,7 @@ const BLOCK_MAPPING = {
     "minecraft:dark_oak_leaves": "default:leaves",
     "minecraft:leaves2": "default:acacia_leaves",
 
-    // === 砂・砂利 ===
+    // === Sand & Gravel ===
     "minecraft:sand": "default:sand",
     "minecraft:red_sand": "default:redsand",
     "minecraft:gravel": "default:gravel",
@@ -55,7 +55,7 @@ const BLOCK_MAPPING = {
     "minecraft:smooth_sandstone": "default:sandstonesmooth",
     "minecraft:red_sandstone": "default:redsandstone",
 
-    // === 鉱石 ===
+    // === Ores ===
     "minecraft:gold_ore": "default:stone_with_gold",
     "minecraft:iron_ore": "default:stone_with_iron",
     "minecraft:coal_ore": "default:stone_with_coal",
@@ -66,7 +66,7 @@ const BLOCK_MAPPING = {
     "minecraft:copper_ore": "default:stone_with_copper",
     "minecraft:quartz_ore": "default:quartz_ore",
 
-    // === 鉱石ブロック ===
+    // === Mineral Blocks ===
     "minecraft:gold_block": "default:goldblock",
     "minecraft:iron_block": "default:steelblock",
     "minecraft:diamond_block": "default:diamondblock",
@@ -78,7 +78,7 @@ const BLOCK_MAPPING = {
     "minecraft:chiseled_quartz_block": "default:quartz_chiseled",
     "minecraft:quartz_pillar": "default:quartz_pillar",
 
-    // === レンガ・石材 ===
+    // === Bricks & Stonework ===
     "minecraft:brick_block": "default:brick",
     "minecraft:bricks": "default:brick",
     "minecraft:stonebrick": "default:stonebrick",
@@ -89,7 +89,7 @@ const BLOCK_MAPPING = {
     "minecraft:mossy_cobblestone": "default:mossycobble",
     "minecraft:nether_brick": "default:brick",
 
-    // === ガラス ===
+    // === Glass ===
     "minecraft:glass": "default:glass",
     "minecraft:glass_pane": "default:glass",
     "minecraft:stained_glass": "default:glass",
@@ -110,7 +110,7 @@ const BLOCK_MAPPING = {
     "minecraft:red_stained_glass": "default:glass_red",
     "minecraft:black_stained_glass": "default:glass_black",
 
-    // === 羊毛 ===
+    // === Wool ===
     "minecraft:wool": "wool:white",
     "minecraft:white_wool": "wool:white",
     "minecraft:orange_wool": "wool:orange",
@@ -129,7 +129,7 @@ const BLOCK_MAPPING = {
     "minecraft:red_wool": "wool:red",
     "minecraft:black_wool": "wool:black",
 
-    // === テラコッタ ===
+    // === Terracotta ===
     "minecraft:hardened_clay": "default:hardened_clay",
     "minecraft:terracotta": "default:hardened_clay",
     "minecraft:white_terracotta": "hardened_clay:white",
@@ -150,7 +150,7 @@ const BLOCK_MAPPING = {
     "minecraft:black_terracotta": "hardened_clay:black",
     "minecraft:stained_hardened_clay": "default:hardened_clay",
 
-    // === コンクリート ===
+    // === Concrete ===
     "minecraft:concrete": "concrete:concrete",
     "minecraft:white_concrete": "concrete:concrete_white",
     "minecraft:orange_concrete": "concrete:concrete_orange",
@@ -169,7 +169,7 @@ const BLOCK_MAPPING = {
     "minecraft:red_concrete": "concrete:concrete_red",
     "minecraft:black_concrete": "concrete:concrete_black",
 
-    // === その他ブロック ===
+    // === Misc Blocks ===
     "minecraft:bedrock": "default:stone",
     "minecraft:water": "default:water_source",
     "minecraft:flowing_water": "default:water_flowing",
@@ -193,13 +193,13 @@ const BLOCK_MAPPING = {
     "minecraft:pumpkin": "farming_plants:pumpkin_fruit",
     "minecraft:hay_block": "farming:straw",
 
-    // === 機能ブロック ===
+    // === Functional Blocks ===
     "minecraft:chest": "default:chest",
     "minecraft:crafting_table": "workbench:workbench",
     "minecraft:furnace": "default:furnace",
     "minecraft:lit_furnace": "default:furnace",
 
-    // === 階段 (基本マッピング) ===
+    // === Stairs (Base Mapping) ===
     "minecraft:oak_stairs": "stairs:stair_default_wood",
     "minecraft:spruce_stairs": "stairs:stair_default_pine_wood",
     "minecraft:birch_stairs": "stairs:stair_default_birch_wood",
@@ -213,7 +213,7 @@ const BLOCK_MAPPING = {
     "minecraft:sandstone_stairs": "stairs:stair_default_sandstone",
     "minecraft:quartz_stairs": "stairs:stair_default_quartz_block",
 
-    // === ハーフブロック (基本マッピング) ===
+    // === Slabs (Base Mapping) ===
     "minecraft:stone_slab": "stairs:slab_default_stone",
     "minecraft:oak_slab": "stairs:slab_default_wood",
     "minecraft:spruce_slab": "stairs:slab_default_pine_wood",
@@ -226,7 +226,7 @@ const BLOCK_MAPPING = {
     "minecraft:sandstone_slab": "stairs:slab_default_sandstone",
     "minecraft:quartz_slab": "stairs:slab_default_quartz_block",
 
-    // === 松明・照明 ===
+    // === Torches & Lighting ===
     "minecraft:torch": "default:torch",
     "minecraft:wall_torch": "default:torch",
     "minecraft:lantern": "lanterns:lantern_off",
@@ -234,10 +234,10 @@ const BLOCK_MAPPING = {
     "minecraft:redstone_lamp": "default:glowstone",
     "minecraft:lit_redstone_lamp": "default:glowstone",
 
-    // === はしご ===
+    // === Ladders ===
     "minecraft:ladder": "default:ladder_wood",
 
-    // === フェンス ===
+    // === Fences ===
     "minecraft:fence": "default:fence_wood",
     "minecraft:oak_fence": "default:fence_wood",
     "minecraft:spruce_fence": "default:fence_pine_wood",
@@ -247,7 +247,7 @@ const BLOCK_MAPPING = {
     "minecraft:dark_oak_fence": "default:fence_wood",
     "minecraft:nether_brick_fence": "default:fence_wood",
 
-    // === フェンスゲート ===
+    // === Fence Gates ===
     "minecraft:fence_gate": "doors:gate_wood",
     "minecraft:oak_fence_gate": "doors:gate_wood",
     "minecraft:spruce_fence_gate": "doors:gate_pine_wood",
@@ -256,7 +256,7 @@ const BLOCK_MAPPING = {
     "minecraft:acacia_fence_gate": "doors:gate_acacia_wood",
     "minecraft:dark_oak_fence_gate": "doors:gate_wood",
 
-    // === ドア ===
+    // === Doors ===
     "minecraft:wooden_door": "doors:door_wood",
     "minecraft:oak_door": "doors:door_wood",
     "minecraft:spruce_door": "doors:door_pine_wood",
@@ -266,7 +266,7 @@ const BLOCK_MAPPING = {
     "minecraft:dark_oak_door": "doors:door_wood",
     "minecraft:iron_door": "doors:door_steel",
 
-    // === トラップドア ===
+    // === Trapdoors ===
     "minecraft:trapdoor": "doors:trapdoor",
     "minecraft:oak_trapdoor": "doors:trapdoor",
     "minecraft:spruce_trapdoor": "doors:trapdoor_pine_wood",
@@ -276,7 +276,7 @@ const BLOCK_MAPPING = {
     "minecraft:dark_oak_trapdoor": "doors:trapdoor",
     "minecraft:iron_trapdoor": "doors:trapdoor_steel",
 
-    // === ベッド ===
+    // === Beds ===
     "minecraft:bed": "beds:bed_red",
     "minecraft:white_bed": "beds:bed_white",
     "minecraft:orange_bed": "beds:bed_orange",
@@ -295,7 +295,7 @@ const BLOCK_MAPPING = {
     "minecraft:red_bed": "beds:bed_red",
     "minecraft:black_bed": "beds:bed_black",
 
-    // === レール ===
+    // === Rails ===
     "minecraft:rail": "carts:rail",
     "minecraft:golden_rail": "carts:rail",
     "minecraft:powered_rail": "carts:rail",
@@ -305,22 +305,22 @@ const BLOCK_MAPPING = {
     // === TNT ===
     "minecraft:tnt": "tnt:tnt",
 
-    // === ガラス板・鉄格子 ===
+    // === Panes & Bars ===
     "minecraft:stained_glass_pane": "xpanes:pane_flat",
     "minecraft:iron_bars": "xpanes:bar_flat",
 
-    // === クモの巣 ===
+    // === Cobwebs ===
     "minecraft:web": "mobs_monsters:cobweb",
     "minecraft:cobweb": "mobs_monsters:cobweb",
 
-    // === サンゴブロック ===
+    // === Coral Blocks ===
     "minecraft:tube_coral_block": "ocean:coral_blue_tubular_block",
     "minecraft:brain_coral_block": "ocean:coral_pink_acropora_block",
     "minecraft:bubble_coral_block": "ocean:coral_yellow_fiery_block",
     "minecraft:fire_coral_block": "ocean:coral_red_rubrum_block",
     "minecraft:horn_coral_block": "ocean:coral_yellow_fiery_block",
 
-    // === 看板 ===
+    // === Signs ===
     "minecraft:standing_sign": "signs:sign",
     "minecraft:wall_sign": "signs:sign",
     "minecraft:oak_sign": "signs:sign",
@@ -330,7 +330,7 @@ const BLOCK_MAPPING = {
     "minecraft:acacia_sign": "signs:sign_acacia_wood",
     "minecraft:dark_oak_sign": "signs:sign",
 
-    // === その他の追加ブロック ===
+    // === Additional Blocks ===
     "minecraft:bamboo": "water_plants:bamboo",
     "minecraft:lily_pad": "swamp_biome:waterlily",
     "minecraft:waterlily": "swamp_biome:waterlily",

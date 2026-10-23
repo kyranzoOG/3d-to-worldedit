@@ -1,0 +1,8 @@
+{
+  "name": "WorldEdit Converter",
+  "description": "Convert Minecraft Schematic files (.nbt, .schem), Minetest WorldEdit (.we), and 3D models (.obj, .stl) to Multicraft WorldEdit commands",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

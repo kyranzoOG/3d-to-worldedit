@@ -81,10 +81,10 @@ def save_commands(commands, output_file):
 
 def main():
     # Get input from user
-    model_path = input("3Dモデルファイルのパスを入力してください: ")
-    resolution = float(input("ブロックのサイズ（解像度）を入力してください（小さいほど詳細になります）: "))
-    scale = int(input("スケール倍率を入力してください（1 = 通常サイズ, 2 = 2倍サイズなど）: "))
-    filename = input("出力ファイル名を入力してください（入力がない場合はモデル名.txtになります）: ")
+    model_path = input("Enter 3D model file path: ")
+    resolution = float(input("Enter voxel resolution (smaller = finer detail): "))
+    scale = int(input("Enter scale multiplier (1 = 1x, 2 = 2x, etc.): "))
+    filename = input("Enter output filename (leave blank for model_name.txt): ")
     
     # Determine output filename
     if not filename:
@@ -94,7 +94,7 @@ def main():
     # Create output path in script's directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
     output_file = os.path.join(script_dir, filename)
-    print(f"ファイルは以下に保存されます: {output_file}")
+    print(f"Output path: {output_file}")
     
     # Load and process the model
     mesh = load_3d_model(model_path)
@@ -102,16 +102,16 @@ def main():
         return
     
     # Convert to voxels
-    print("モデルをブロックに変換中...")
+    print("Voxelizing 3D model...")
     voxels = voxelize_mesh(mesh, resolution)
     
     # Generate commands
-    print("建築コマンドを生成中...")
+    print("Generating WorldEdit commands...")
     commands = generate_build_commands(voxels, scale=scale)
     
     # Save commands
     save_commands(commands, output_file)
-    print(f"総ブロック数: {len(commands)}")
+    print(f"Total commands: {len(commands)}")
 
 if __name__ == "__main__":
     main()

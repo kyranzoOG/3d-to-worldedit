@@ -1,0 +1,15 @@
+{
+  "name": "worldedit-converter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Convert Minecraft Schematic files (.nbt, .schem), Minetest WorldEdit (.we), and 3D models (.obj, .stl) to Multicraft WorldEdit commands",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
