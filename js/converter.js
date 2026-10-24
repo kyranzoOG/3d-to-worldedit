@@ -483,7 +483,40 @@
         }
 
 
-        // ========== Utils ==========
+        // ========== Utils & Selection/Copy Protection ==========
+        let allowProgrammaticCopy = false;
+
+        function isEditableInputTarget(target) {
+            const el = target && target.nodeType === 1 ? target : (target ? target.parentElement : null);
+            return Boolean(el && el.closest('input[type="text"], input[type="number"], #importTextarea'));
+        }
+
+        // Prevent left-click hold text selection and manual copying; copying works exclusively via Copy buttons
+        document.addEventListener('selectstart', (e) => {
+            if (allowProgrammaticCopy) return;
+            if (isEditableInputTarget(e.target)) return;
+            e.preventDefault();
+        });
+
+        document.addEventListener('copy', (e) => {
+            if (!allowProgrammaticCopy) {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('cut', (e) => {
+            if (!isEditableInputTarget(e.target)) {
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('dragstart', (e) => {
+            const el = e.target && e.target.nodeType === 1 ? e.target : null;
+            if (!el || !el.closest('#dropZone')) {
+                e.preventDefault();
+            }
+        });
+
         async function copyTextToClipboard(text) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 try {
@@ -493,16 +526,25 @@
                     // Fallback below for iframe permissions
                 }
             }
-            const ta = document.createElement('textarea');
-            ta.value = text;
-            ta.setAttribute('readonly', '');
-            ta.className = 'sr-clipboard-fallback';
-            document.body.appendChild(ta);
-            ta.select();
-            const ok = document.execCommand('copy');
-            document.body.removeChild(ta);
-            if (!ok) throw new Error('Clipboard access unavailable');
-            return true;
+            allowProgrammaticCopy = true;
+            try {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.setAttribute('readonly', '');
+                ta.className = 'sr-clipboard-fallback';
+                ta.style.userSelect = 'text';
+                ta.style.webkitUserSelect = 'text';
+                document.body.appendChild(ta);
+                ta.focus({ preventScroll: true });
+                ta.select();
+                ta.setSelectionRange(0, text.length);
+                const ok = document.execCommand('copy');
+                document.body.removeChild(ta);
+                if (!ok) throw new Error('Clipboard access unavailable');
+                return true;
+            } finally {
+                allowProgrammaticCopy = false;
+            }
         }
 
         function log(msg, type = '') {
@@ -1565,7 +1607,7 @@
 
             item.appendChild(buttons);
 
-            // Copyable Command Preview (Expanded on Part 1 so user immediately gets copyable commands)
+            // Non-selectable Command Output Preview (copying via Copy Commands button above)
             const preview = document.createElement('div');
             preview.className = 'command-preview';
 
@@ -1573,26 +1615,15 @@
             const previewHeader = document.createElement('div');
             previewHeader.className = 'command-preview-header';
             previewHeader.innerHTML = `
-                <span class="command-preview-title">Copyable Command Output (${commands.length.toLocaleString()} lines)</span>
+                <span class="command-preview-title">Command Output Preview (${commands.length.toLocaleString()} lines)</span>
                 <span class="command-preview-toggle ${isInitiallyCollapsed ? '' : 'expanded'}">
                     <span class="toggle-text">${isInitiallyCollapsed ? 'Expand' : 'Collapse'}</span>
-                    <img src="assets/icons/chevron-down.svg" alt="" width="14" height="14" class="chevron-icon">
+                    <img src="assets/icons/chevron-down.svg" alt="" width="14" height="14" class="chevron-icon" draggable="false">
                 </span>
             `;
 
             const previewBody = document.createElement('div');
             previewBody.className = isInitiallyCollapsed ? 'command-preview-body collapsed' : 'command-preview-body';
-
-            // Direct copyable readonly textarea + syntax highlighted preview
-            const rawBox = document.createElement('textarea');
-            rawBox.className = 'command-raw-textarea';
-            rawBox.readOnly = true;
-            rawBox.spellcheck = false;
-            rawBox.setAttribute('aria-label', `Copyable commands for ${fileName}`);
-            rawBox.value = commands.length > 2500
-                ? commands.slice(0, 2500).join('\n') + `\n# ... ${(commands.length - 2500).toLocaleString()} additional lines (use Copy Commands button above for full ${commands.length.toLocaleString()} lines)`
-                : commandText;
-            rawBox.addEventListener('focus', () => rawBox.select());
 
             const previewContent = document.createElement('div');
             previewContent.className = 'command-preview-content';
@@ -1603,9 +1634,8 @@
                     .replace(/(\/s\s)/g, '<span class="cmd-set">$1</span>')
                     .replace(/(\/param2\s+\d+)/g, '<span class="cmd-param">$1</span>');
                 return `<span class="cmd-line">${highlighted}</span>`;
-            }).join('') + (commands.length > 300 ? `<span class="cmd-line cmd-more">... ${(commands.length - 300).toLocaleString()} more lines</span>` : '');
+            }).join('') + (commands.length > 300 ? `<span class="cmd-line cmd-more">... ${(commands.length - 300).toLocaleString()} more lines (use Copy Commands button above)</span>` : '');
 
-            previewBody.appendChild(rawBox);
             previewBody.appendChild(previewContent);
 
             previewHeader.addEventListener('click', () => {
@@ -2714,7 +2744,7 @@
             const IDLE_FADE_MS = 1600;
             const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            let viewW = window.innerWidth;
+            let viewW = document.documentElement.clientWidth || window.innerWidth;
             let viewH = window.innerHeight;
             let dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -2733,7 +2763,7 @@
             let bgRafId = null;
 
             function resizeBgCanvas() {
-                viewW = window.innerWidth;
+                viewW = document.documentElement.clientWidth || window.innerWidth;
                 viewH = window.innerHeight;
                 dpr = Math.min(window.devicePixelRatio || 1, 2);
                 bgCanvas.width = Math.floor(viewW * dpr);

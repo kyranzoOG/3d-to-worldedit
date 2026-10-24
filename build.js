@@ -13,7 +13,14 @@ if (fs.existsSync(distDir)) {
 fs.mkdirSync(distDir, { recursive: true });
 
 // Copy static files and directories required for GitHub Pages hosting
-const entriesToCopy = ['index.html', '.nojekyll', 'assets', 'js'];
+const entriesToCopy = [
+    'index.html',
+    '.nojekyll',
+    'craft_editor_pressed.png',
+    'craft_editor_pressed_grid.svg',
+    'assets',
+    'js'
+];
 
 for (const entry of entriesToCopy) {
     const srcPath = path.join(__dirname, entry);
